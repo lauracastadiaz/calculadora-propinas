@@ -2,7 +2,7 @@
 
 Una aplicación web moderna y eficiente para calcular propinas. Este proyecto está desarrollado con las últimas tecnologías en el ecosistema de React, optimizado para el rendimiento y diseñado con una experiencia de usuario atractiva y funcional.
 
-### Pruebala aquí : 
+### Pruébala aquí : 
 
 https://calculando-propinas.netlify.app/ 
 
