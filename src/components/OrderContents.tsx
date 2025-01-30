@@ -3,10 +3,12 @@ import { menuItem, orderItem } from "../types"
 
 type OrderContentsProps = {
     order: orderItem[], 
-    removeItem: (id: menuItem['id']) => void
+    removeItem: (id: menuItem['id']) => void,
+    addItem: (item: menuItem) => void, 
+    restarItem: (id: menuItem['id']) => void
 }
 
-export default function OrderContents({order, removeItem}: OrderContentsProps) {
+export default function OrderContents({order, removeItem, addItem, restarItem}: OrderContentsProps, ) {
   return (
     <div>
         <h2 className='text-3xl'>Consumo</h2>
@@ -21,7 +23,11 @@ export default function OrderContents({order, removeItem}: OrderContentsProps) {
                 >
                     <div>
                         <p className="text-lg">{item.name} - {formatCurrency(item.price)}</p>
-                        <p className="font-black">Cantidad: {item.quantity} - {formatCurrency(item.price * item.quantity)}</p>
+                        <p className="font-black">Cantidad: {item.quantity}</p>
+                        <button onClick={() => restarItem(item.id)} 
+                        className="bg-slate-300 h-8 w-8 rounded-full text-white hover:bg-slate-200">-</button>
+                        <button onClick={() => addItem(item)} className="bg-slate-300 h-8 w-8 rounded-full text-white hover:bg-slate-200">+</button> 
+                        <p className="font-black">Total : {formatCurrency(item.price * item.quantity)}</p>
                     </div>
                    
                     <button className="bg-red-600 h-8 w-8 rounded-full text-white hover:bg-red-300"

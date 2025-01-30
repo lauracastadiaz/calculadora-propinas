@@ -31,6 +31,27 @@ export default function useOrder() {
         }
     }
 
+    const restarItem = (id: menuItem['id']) => {
+        const itemExist = order.find(orderItem => orderItem.id === id)
+        
+        if(itemExist){
+            const updatedOrder = order.map(orderItem => orderItem.id === id 
+                ? 
+                {...orderItem, 
+                    quantity: orderItem.quantity - 1
+                } 
+                :
+                orderItem
+            )
+            if(updatedOrder.find(orderItem => orderItem.id === id)?.quantity === 0){
+                setOrder(order.filter(item => item.id !== id)) } 
+                else{
+                    setOrder(updatedOrder)
+                }
+            
+    }
+}
+
     const removeItem = (id: menuItem['id']) => {
       setOrder(order.filter(item => item.id !== id))
     }
@@ -40,6 +61,8 @@ export default function useOrder() {
         setOrder([])
         setPropina(0)
     }
+
+  
    
 
     return {
@@ -48,6 +71,7 @@ export default function useOrder() {
         setPropina,
         addItem,
         removeItem,
-        placeOrder
+        placeOrder, 
+        restarItem
     }
 }

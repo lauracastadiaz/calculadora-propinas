@@ -7,7 +7,7 @@ import useOrder from "./hooks/useOrder";
 
 function App() {
 
-  const {order, propina, setPropina, addItem, removeItem, placeOrder} = useOrder();
+  const {order, propina, setPropina, addItem, removeItem, placeOrder, restarItem} = useOrder();
 
   return (
     <>
@@ -40,6 +40,9 @@ function App() {
          <OrderContents
           order= {order}
           removeItem = {removeItem}
+          addItem={addItem}
+          restarItem={restarItem}
+         
           />
 
           <Propina
